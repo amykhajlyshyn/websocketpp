@@ -1806,11 +1806,6 @@ void connection<config>::write_frame() {
         message_ptr next_message = write_pop();
         if (next_message) {
             m_current_msgs.push_back(next_message);
-            if (!next_message->get_terminal()) {
-                next_message = write_pop();
-            } else {
-                next_message = message_ptr();
-            }
         }
         
         if (m_current_msgs.empty()) {
